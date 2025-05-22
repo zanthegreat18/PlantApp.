@@ -48,3 +48,31 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+               const SizedBox(height: 24),
+              const Text('Recommended', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              const SizedBox(height: 12),
+              SizedBox(
+                height: 200,
+                child: BlocBuilder<PlantBloc, PlantState>(
+                  builder: (context, state) {
+                    if (state is PlantLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is PlantLoaded) {
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.plants.length,
+                        itemBuilder: (_, index) => PlantCard(plant: state.plants[index]),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
