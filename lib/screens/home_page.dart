@@ -35,3 +35,16 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 16),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  filled: true,
+                  fillColor: Colors.white12,
+                  prefixIcon: const Icon(Icons.search, color: Colors.white70),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
