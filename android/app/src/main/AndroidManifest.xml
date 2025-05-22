@@ -22,8 +22,14 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
+            <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCdqmGoK2LoGW5p_WS4CYTCdsQI4OKJH80"
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"
+            />
         </provider>
-        
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
