@@ -1,4 +1,4 @@
-import 'package:app_tanaman/widgets/icon_tile.dart';
+import 'package:ojan_project1/widgets/icon_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_place/google_place.dart';
 import 'package:geolocator/geolocator.dart'; 
