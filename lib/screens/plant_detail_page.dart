@@ -108,3 +108,64 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
       },
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Row(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconTile(
+                  icon: Icons.search,
+                  onTap: () => showAddressSearchSheet(context),
+                ),
+              ],
+            ),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(80),
+                  bottomLeft: Radius.circular(80),
+                ),
+                child: Container(
+                  color: Colors.white10,
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.local_florist, size: 120, color: Color(0xFF00FFB3)),
+                      const SizedBox(height: 24),
+                      Text(
+                        widget.plant.name,
+                        style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      Text(
+                        widget.plant.origin,
+                        style: const TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
+                      Text(
+                        widget.plant.price,
+                        style: const TextStyle(fontSize: 24, color: Color(0xFF00FFB3)),
+                      ),
+                      const SizedBox(height: 24),
+                      if (selectedAddress.isNotEmpty)
+                        Text(
+                          "📍 Lokasi dipilih: $selectedAddress",
+                          style: const TextStyle(color: Colors.greenAccent),
+                          textAlign: TextAlign.center,
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
