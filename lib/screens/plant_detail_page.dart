@@ -24,3 +24,10 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
     _checkPermission(); // <-- Minta izin lokasi dulu
     googlePlace = GooglePlace("AIzaSyCdqmGoK2LoGW5p_WS4CYTCdsQI4OKJH80");
   }
+
+  void _checkPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+      await Geolocator.requestPermission();
+    }
+  }
