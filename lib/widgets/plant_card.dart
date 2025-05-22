@@ -23,3 +23,21 @@ class PlantCard extends StatelessWidget {
           color: const Color(0xFF1E1E1E),
           borderRadius: BorderRadius.circular(16),
         ),
+        
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.local_florist, size: 40, color: Color(0xFF00FFB3)),
+            const Spacer(),
+            Text(plant.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(plant.origin, style: const TextStyle(color: Colors.grey)),
+            Text(plant.price, style: const TextStyle(
+              color: Color(0xFF00FFB3),
+              fontWeight: FontWeight.bold,
+            )),
+          ],
+        ),
+      ),
+    );
+  }
+}
