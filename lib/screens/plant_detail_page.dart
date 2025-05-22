@@ -62,3 +62,21 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                           prefixIcon: Icon(Icons.location_on, color: Colors.white),
                           border: OutlineInputBorder(),
                         ),
+                        onChanged: (value) async {
+                          if (value.isNotEmpty) {
+                            setModalState(() => isLoading = true);
+                            var result = await googlePlace.autocomplete.get(value);
+                            if (mounted) {
+                              setModalState(() {
+                                isLoading = false;
+                                predictions = result?.predictions ?? [];
+                              });
+                            }
+                          } else {
+                            setModalState(() {
+                              predictions = [];
+                              isLoading = false;
+                            });
+                          }
+                        },
+                      ),
