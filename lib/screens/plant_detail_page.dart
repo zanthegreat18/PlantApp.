@@ -80,3 +80,31 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
                           }
                         },
                       ),
+                      const SizedBox(height: 8),
+                      if (isLoading)
+                        const CircularProgressIndicator(color: Colors.white),
+                      ...predictions.map(
+                        (p) => ListTile(
+                          title: Text(
+                            p.description ?? "",
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          onTap: () {
+                            controller.text = p.description!;
+                            setState(() {
+                              selectedAddress = p.description!;
+                            });
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
