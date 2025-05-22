@@ -36,6 +36,7 @@ dependencies:
   google_place: ^0.4.7   # ini gantinya flutter_google_places
   image_picker: ^1.1.2
   cupertino_icons: ^1.0.8
+  geolocator: ^14.0.0
 
 dev_dependencies:
   flutter_test:
