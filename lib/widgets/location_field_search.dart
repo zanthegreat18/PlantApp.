@@ -29,3 +29,40 @@ class _LocationSearchFieldState extends State<LocationSearchField> {
       });
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TextField(
+          controller: controller,
+          decoration: const InputDecoration(
+            hintText: "Cari alamat...",
+            prefixIcon: Icon(Icons.location_on),
+            border: OutlineInputBorder(),
+          ),
+          onChanged: (value) {
+            if (value.isNotEmpty) {
+              autoCompleteSearch(value);
+            } else {
+              setState(() {
+                predictions = [];
+              });
+            }
+          },
+        ),
+        ...predictions.map((p) => ListTile(
+              title: Text(p.description ?? ""),
+              onTap: () {
+                controller.text = p.description!;
+                widget.onLocationSelected(p.description!);
+                setState(() {
+                  predictions = [];
+                });
+              },
+            )),
+      ],
+    );
+  }
+}
