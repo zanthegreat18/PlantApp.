@@ -31,3 +31,34 @@ class _PlantDetailPageState extends State<PlantDetailPage> {
       await Geolocator.requestPermission();
     }
   }
+
+  void showAddressSearchSheet(BuildContext context) {
+    bool isLoading = false;
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.grey[900],
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (_) {
+        return Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: StatefulBuilder(
+            builder: (context, setModalState) {
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      TextField(
+                        controller: controller,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: const InputDecoration(
+                          hintText: "Cari alamat...",
+                          hintStyle: TextStyle(color: Colors.white54),
+                          prefixIcon: Icon(Icons.location_on, color: Colors.white),
+                          border: OutlineInputBorder(),
+                        ),
