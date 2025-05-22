@@ -20,3 +20,12 @@ class _LocationSearchFieldState extends State<LocationSearchField> {
     super.initState();
     googlePlace = GooglePlace("AIzaSyCdqmGoK2LoGW5p_WS4CYTCdsQI4OKJH80"); 
   }
+
+  void autoCompleteSearch(String value) async {
+    var result = await googlePlace.autocomplete.get(value);
+    if (result != null && result.predictions != null) {
+      setState(() {
+        predictions = result.predictions!;
+      });
+    }
+  }
