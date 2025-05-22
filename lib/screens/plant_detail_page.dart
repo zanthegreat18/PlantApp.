@@ -11,3 +11,16 @@ class PlantDetailPage extends StatefulWidget {
   @override
   State<PlantDetailPage> createState() => _PlantDetailPageState();
 }
+
+class _PlantDetailPageState extends State<PlantDetailPage> {
+  late GooglePlace googlePlace;
+  List<AutocompletePrediction> predictions = [];
+  TextEditingController controller = TextEditingController();
+  String selectedAddress = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _checkPermission(); // <-- Minta izin lokasi dulu
+    googlePlace = GooglePlace("AIzaSyCdqmGoK2LoGW5p_WS4CYTCdsQI4OKJH80");
+  }
